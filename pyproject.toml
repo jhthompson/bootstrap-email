@@ -1,0 +1,26 @@
+[project]
+name = "bootstrap-email"
+version = "0.1"
+description = "Python port of the bootstrap-email Ruby library"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [{name = "Jeremy Thompson"}]
+license = {file = "LICENSE"}
+dependencies = [
+    "bs4",
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project.urls]
+Homepage = "https://github.com/jhthompson/bootstrap-email"
+Changelog = "https://github.com/jhthompson/bootstrap-email/releases"
+Issues = "https://github.com/jhthompson/bootstrap-email/issues"
+CI = "https://github.com/jhthompson/bootstrap-email/actions"
+
+[project.optional-dependencies]
+lint = [
+    "ruff",
+]
