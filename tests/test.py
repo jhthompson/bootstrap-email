@@ -64,5 +64,29 @@ class TestCompile(unittest.TestCase):
                 self.assertEqual(output, output_fixture)
 
     def test_utilities(self):
-        # TODO: some of the template files use ERB... translate somehow? just hard code the output from ERB templating?
-        pass
+        cases = [
+            "align",
+            "background",
+            "border-radius",
+            "color",
+            "display",
+            "sizing",
+            "spacing",
+            "to-table",
+            "typography",
+            "vertical-align",
+        ]
+
+        for case in cases:
+            with self.subTest(case):
+                input_fixture = (
+                    files("tests").joinpath(f"input/utilities/{case}.html").read_text()
+                )
+                output_fixture = (
+                    files("tests").joinpath(f"output/utilities/{case}.html").read_text()
+                )
+
+                compiler = Compiler(input_fixture)
+                output = compiler.compile()
+
+                self.assertEqual(output, output_fixture)
