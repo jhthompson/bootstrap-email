@@ -1,13 +1,15 @@
 [project]
 name = "bootstrap-email"
 version = "0.1"
-description = "Python port of the bootstrap-email Ruby library"
+description = "Python port of the bootstrap-email Ruby library - Bootstrap 5+ stylesheet, compiler, and inliner for responsive and consistent emails with the Bootstrap syntax you know and love."
 readme = "README.md"
 requires-python = ">=3.9"
 authors = [{name = "Jeremy Thompson"}]
 license = {file = "LICENSE"}
 dependencies = [
-    "bs4",
+    "premailer",
+    "libsass",
+    "cssutils",
 ]
 
 [build-system]
@@ -23,4 +25,17 @@ CI = "https://github.com/jhthompson/bootstrap-email/actions"
 [project.optional-dependencies]
 lint = [
     "ruff",
+]
+test = [
+    "coverage",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle
+    "F",    # Pyflakes
+    "UP",   # pyupgrade
+    "B",    # flake8-bugbear
+    "SIM",  # flake8-simplify
+    "I",    # isort
 ]
