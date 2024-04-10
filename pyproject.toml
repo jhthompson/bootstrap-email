@@ -29,9 +29,6 @@ lint = [
 test = [
     "coverage",
 ]
-django = [
-    "Django",
-]
 
 [tool.ruff.lint]
 select = [
