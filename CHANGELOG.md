@@ -17,9 +17,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Include necessary HTML and SCSS files in the distribution
-
 ### Security
+
+## [0.2.0] - 2024-04-10
+
+### Fixed
+
+- Include necessary HTML and SCSS files in the distribution
 
 ## [0.1.0] - 2024-04-10
 

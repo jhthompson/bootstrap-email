@@ -1,6 +1,6 @@
 [project]
 name = "bootstrap-email"
-version = "0.1.0"
+version = "0.2.0"
 description = "Python port of the bootstrap-email Ruby library - Bootstrap 5+ stylesheet, compiler, and inliner for responsive and consistent emails with the Bootstrap syntax you know and love."
 readme = "README.md"
 requires-python = ">=3.9"
