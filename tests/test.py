@@ -263,7 +263,7 @@ class FinalizeDocumentTest(unittest.TestCase):
     pass
 
 
-# @unittest.skip("End-to-end tests are not yet implemented")
+@unittest.skip("Full end-to-end tests are not yet implemented")
 class CompileTest(unittest.TestCase):
     def test_compile(self):
         input_dir = "tests/input/end-to-end"
