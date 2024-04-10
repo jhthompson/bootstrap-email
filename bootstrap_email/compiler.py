@@ -558,30 +558,6 @@ def purged_css_from_head(document: HtmlElement):
 
     return default + stylesheet.cssText.decode("utf-8")
 
-    # get each CSS declaration
-    # for group in re.findall(r"\w*\.[\w\-]*[\s\S\n]+?(?=})}{1}", custom):
-    #     # get the first class for each comma separated CSS declaration
-    #     exist = any(
-    #         selector
-    #         for selector in re.findall(r"(\.[\w\-]*).*?((,+?)|{+?)", group)
-    #         if document.xpath(f'//*[contains(@class, "{selector[1:]}")]')
-    #     )
-    #     if not exist:
-    #         custom = custom.replace(group, "")
-    # get each CSS declaration
-    # for group in re.findall(r"\w*\.[\w\-]*[\s\S\n]+?(?=})}{1}", custom):
-    #     # get the first class for each comma separated CSS declaration
-    #     exist = False
-    #     selectors = re.findall(r"(\.[\w\-]*).*?((,+?)|{+?)", group)
-    #     for selector in selectors:
-    #         if document.xpath(f'//*[contains(@class, "{selector[0]}")]'):
-    #             exist = True
-    #             break
-    #     if not exist:
-    #         custom = custom.replace(group, "")
-
-    # return re.sub("\n\s*\n+", "\n", default + custom)
-
 
 def add_missing_meta_tags(document: HtmlElement):
     META_TAGS = [
