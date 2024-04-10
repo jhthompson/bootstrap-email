@@ -405,7 +405,6 @@ def convert_margin(document: HtmlElement):
 
         # Remove the old element
         parent.remove(node)
-        print("here")
 
 
 def convert_spacer(document: HtmlElement):
