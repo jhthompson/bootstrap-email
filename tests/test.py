@@ -26,7 +26,7 @@ def assertHtmlEqual(got: str, want: str):
         raise AssertionError(message)
 
 
-def assertHtmlEqualIgnoringStyles(got: str, want: str):
+def assertHtmlAndStylesEqual(got: str, want: str):
     checker = LHTMLOutputChecker()
 
     # Parse the HTML strings into lxml elements
@@ -43,7 +43,7 @@ def assertHtmlEqualIgnoringStyles(got: str, want: str):
                 got_el.attrib["style"], want_el.attrib["style"]
             )
         ):
-            message = f"CSS styles do not match: {got_el.attrib['style']} != {want_el.attrib['style']}"  # noqa: E501
+            message = f"CSS styles do not match for <{got_el.tag}>\n\ngot:\n {got_el.attrib['style']}\n\nwant:\n {want_el.attrib['style']}"  # noqa: E501
             raise AssertionError(message)
 
         # Remove the style attribute from the elements
@@ -279,7 +279,7 @@ class CompileTest(unittest.TestCase):
 
                 document = compile(html)
 
-                assertHtmlEqualIgnoringStyles(document, expected_output_file.read())
+                assertHtmlAndStylesEqual(document, expected_output_file.read())
 
 
 if __name__ == "__main__":
