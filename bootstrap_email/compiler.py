@@ -550,10 +550,12 @@ def purged_css_from_head(document: HtmlElement):
 
                     # Check if the selector is present in the document
                     if not document.xpath(xpath_expr):
-                        # If the selector is not present, remove the nested rule from the media rule
+                        # If the selector is not present, remove the nested rule
+                        # from the media rule
                         rule.deleteRule(j)
             if len(rule.cssRules) == 0:
-                # If the media rule has no more nested rules, remove it from the stylesheet
+                # If the media rule has no more nested rules,
+                # remove it from the stylesheet
                 stylesheet.deleteRule(i)
 
     return default + stylesheet.cssText.decode("utf-8")
