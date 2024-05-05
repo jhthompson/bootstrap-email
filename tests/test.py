@@ -8,9 +8,9 @@ from lxml.doctestcompare import LHTMLOutputChecker
 from lxml.html import document_fromstring, fragment_fromstring, tostring
 
 from bootstrap_email.compiler import (
-    add_missing_meta_tags,
     compile,
     compile_html,
+    configure_html,
     has_margin_bottom_class,
     has_margin_top_class,
     has_vertical_margin_class,
@@ -121,36 +121,26 @@ class CompileHtmlTest(unittest.TestCase):
 
 
 class ConfigureHtmlTest(unittest.TestCase):
-    # TODO: make this use the configure_html() call instead of the individual functions
-    #   note: this should be like the above test case where there are input and output
-    #   files
-    def test_add_missing_meta_tags(self):
-        document = document_fromstring("""
-        <html>
-            <head>
-                <meta http-equiv="x-ua-compatible" content="ie=edge">
-            </head>
-            <body>
-            </body>
-        </html>
-        """)
-        add_missing_meta_tags(document)
+    def test_configure_html(self):
+        input_dir = "tests/input/configure-html"
+        output_dir = "tests/output/configure-html"
 
-        expected = """
-        <html>
-            <head>
-                <meta name="x-apple-disable-message-reformatting">
-                <meta name="viewport" content="width=device-width, initial-scale=1">
-                <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
-                <meta http-equiv="x-ua-compatible" content="ie=edge">
-            </head>
-            <body>
-            </body>
-        </html>
-        """  # noqa: E501
+        for filename in os.listdir(input_dir):
+            with (
+                self.subTest(filename),
+                open(os.path.join(input_dir, filename)) as input_file,
+                open(os.path.join(output_dir, filename)) as expected_output_file,
+            ):
+                html = input_file.read()
 
-        assertHtmlEqual(tostring(document, encoding="unicode"), expected)
+                document = configure_html(document_fromstring(html))
 
+                assertHtmlEqual(
+                    tostring(document, encoding="unicode"), expected_output_file.read()
+                )
+
+
+class UtilitiesTest(unittest.TestCase):
     def test_template(self):
         template_name = "base.html"
         mapping = {"contents": "<p>Hello, world!</p>"}
