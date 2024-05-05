@@ -102,8 +102,8 @@ class AssertHtmlEqualTest(unittest.TestCase):
 
 class CompileHtmlTest(unittest.TestCase):
     def test_compile_html(self):
-        input_dir = "tests/input/integration"
-        output_dir = "tests/output/integration"
+        input_dir = "tests/input/compile-html"
+        output_dir = "tests/output/compile-html"
 
         for filename in os.listdir(input_dir):
             with (
